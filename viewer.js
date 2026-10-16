@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0-only
 (() => {
   // Firefox wraps standalone raster images in an HTML image document.
   if (!document.contentType.startsWith("image/")) return;

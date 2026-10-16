@@ -1,6 +1,7 @@
 {
   "name": "improved-image-viewer",
   "version": "0.1.0",
+  "license": "GPL-2.0-only",
   "private": true,
   "scripts": {
     "lint": "web-ext lint --source-dir . --ignore-files 'node_modules/**' 'tests/**' 'package*.json' 'README.md'",

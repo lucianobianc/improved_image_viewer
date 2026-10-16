@@ -23,3 +23,8 @@ Temporary add-ons are removed when Firefox closes. The build ZIP in
 The extension requests access to all sites so it can recognize image tabs at any
 URL; it acts only on image documents, makes no network requests, and stores no data.
 Firefox restricts extensions on some privileged URLs and Mozilla domains.
+
+## License
+
+Licensed under the GNU General Public License, version 2 only
+(`GPL-2.0-only`). See [LICENSE](LICENSE) for the full text.

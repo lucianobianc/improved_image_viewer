@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0-only
 const rotations = {
   "rotate-clockwise": 90,
   "rotate-counterclockwise": -90
