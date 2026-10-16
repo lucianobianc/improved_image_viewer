@@ -3,6 +3,8 @@
   "name": "Improved Image Viewer",
   "version": "0.1.0",
   "description": "Zoom and drag images opened directly in Firefox.",
+  "permissions": ["menus"],
+  "background": { "scripts": ["background.js"] },
   "browser_specific_settings": {
     "gecko": {
       "id": "improved-image-viewer@lucianobianc.github.io",

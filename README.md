@@ -2,7 +2,10 @@
 
 A Firefox 142+ extension for images opened directly in a browser tab. Scroll to zoom
 around the mouse pointer, drag with the left mouse button to pan, and double-click
-to fit the image to the window. Resizing the window also fits the image.
+to fit the image to the window. Right-click the image and choose **Rotate clockwise**
+or **Rotate counterclockwise** to turn it 90° around its center. Zoom and position
+are preserved when rotating; fitting and resizing keep the chosen orientation.
+Resizing the window also fits the image.
 Ordinary web pages are left unchanged. Standalone SVG documents are not supported.
 
 ## Develop

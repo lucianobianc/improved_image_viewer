@@ -7,6 +7,7 @@
   function start() {
     if (!image.naturalWidth || !image.naturalHeight) return;
     let scale, x, y, drag;
+    let angle = 0;
     const width = image.naturalWidth;
     const height = image.naturalHeight;
     Object.assign(document.documentElement.style, {
@@ -17,14 +18,15 @@
     image.removeAttribute("height");
     image.style.cssText = `position:fixed;left:0;top:0;margin:0;padding:0;border:0;max-width:none;max-height:none;width:${width}px;height:${height}px;transform-origin:0 0;cursor:grab;user-select:none;touch-action:none;`;
     image.draggable = false;
-    image.title = "Scroll to zoom · Drag to pan · Double-click to fit";
+    image.title = "Scroll to zoom · Drag to pan · Right-click to rotate · Double-click to fit";
     function render() {
-      image.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
+      image.style.transform = `translate(${x}px, ${y}px) scale(${scale}) rotate(${angle}deg) translate(${-width / 2}px, ${-height / 2}px)`;
     }
     function fit() {
-      scale = Math.min(1, innerWidth / width, innerHeight / height);
-      x = (innerWidth - width * scale) / 2;
-      y = (innerHeight - height * scale) / 2;
+      const sideways = angle % 180 !== 0;
+      scale = Math.min(1, innerWidth / (sideways ? height : width), innerHeight / (sideways ? width : height));
+      x = innerWidth / 2;
+      y = innerHeight / 2;
       render();
     }
     window.addEventListener("wheel", event => {
@@ -57,6 +59,13 @@
     image.addEventListener("lostpointercapture", release);
     image.addEventListener("dblclick", fit);
     window.addEventListener("resize", fit);
+    browser.runtime.onMessage.addListener(message => {
+      if (message.type === "image-viewer-ready") return Promise.resolve(true);
+      if (message.type === "image-viewer-rotate" && [90, -90].includes(message.degrees)) {
+        angle = (angle + message.degrees + 360) % 360;
+        render();
+      }
+    });
     fit();
   }
   if (image.complete) start();
