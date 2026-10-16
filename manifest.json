@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Improved Image Viewer",
+  "version": "0.1.0",
+  "description": "Zoom and drag images opened directly in Firefox.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "improved-image-viewer@lucianobianc.github.io",
+      "strict_min_version": "142.0",
+      "data_collection_permissions": { "required": ["none"] }
+    }
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["viewer.js"],
+    "run_at": "document_idle"
+  }]
+}
